@@ -90,11 +90,34 @@
             width: 65px;
             text-align: center;
         }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            20% {
+                transform: scale(1);
+            }
+            35% {
+                transform: scale(1.05);
+            }
+            50% {
+                transform: scale(1);
+            }
+            65% {
+                transform: scale(1.05);
+            }
+            80% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 <body>
     <div class="box">
-        <img src="/img/icon.png" style="width: 80vw; max-width: 600px; height: 80vw; max-height: 600px; position: absolute;">
+        <img src="/img/icon.png" style="animation: pulse 1.2s linear infinite; width: 80vw; max-width: 600px; height: 80vw; max-height: 600px; position: absolute;">
         <div style="height: fit-content; padding: 0; margin-top: 0px; margin-bottom: 0px; position: absolute;">
             <h3 style="font-size: 24px;">누가 널 좋아하는지 알려줄게.</h3>
             <img src="/img/skrr_logo_text_white.png" style="width: 50vw; max-width: 300px; height: 23.6vw; max-height: 141.5px;">
