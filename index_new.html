@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNS의 신세계, 🤟 Skrr</title>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap');
+        *{
+            font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif !important;
+            /* word-break: keep-all; */
+        }
+        html, body{
+            font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif !important;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #333333;
+        }
+        .box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        input, textarea, button{
+            appearance: none;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            border-radius: 0;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+        }
+        input[type=text], input[type=email]{
+            border: 1px #bcbdc1 solid;
+            border-radius: 4px;
+            padding: 7px 16px 7px 16px;
+            width: calc(90vw - 34px);
+            max-width: calc(600px - 34px);
+            font-size: 16px;
+            height: 26px;
+        }
+        input[type=button]{
+            border: none;
+            border-radius: 4px;
+            padding: 7px 16px 7px 16px;
+            width: 90vw;
+            max-width: 600px;
+            font-size: 16px;
+            height: 60px;
+            color: #FFFFFF;
+            background-color: #333333;
+            cursor: pointer;
+        }
+        .subscribe_button{
+            border: none;
+            border-radius: 10px;
+            padding: 10px 32px 10px 32px;
+            width: calc(100vw - 20px);
+            margin-top: 50px;
+            font-size: 20px;
+            height: fit-content;
+            color: #FFFFFF;
+            background-color: rgba(51, 51, 51, 0.9);
+            cursor: pointer;
+            position: fixed;
+            bottom: 10px;
+        }
+        input[type=checkbox], input[type=radio]{
+            border: 1px #bcbdc1 solid;
+            border-radius: 4px;
+            width: 20px;
+            height: 20px;
+            margin-right: 6px;
+            cursor: pointer;
+        }
+        input[type=checkbox]:checked, input[type=radio]:checked{
+            border: 1px #333333 solid;
+            background-color: #333333;
+        }
+        label{
+            display: flex;
+            align-items: center;
+            color: #606165;
+            margin-bottom: 6px;
+            cursor: pointer;
+        }
+        p{
+            margin-bottom: 10px;
+            line-height: 24px;
+        }
+        a{
+            margin-left: 2px;
+        }
+        hr{
+            border: 0.6px #dfe0e4 solid;
+            margin-top: 16px;
+        }
+        h1{
+            margin-bottom: 40px;
+        }
+        .container{
+            display: inline-block;
+            cursor: pointer;
+            margin-top: 24px;
+        }
+        .bar1, .bar2, .bar3{
+            width: 30px;
+            height: 4px;
+            background-color: #333333;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+        .change .bar1{
+            -webkit-transform: rotate(-45deg) translate(-6px, 5px);
+            transform: rotate(-45deg) translate(-6px, 5px);
+        }
+        .change .bar2{
+            opacity: 0;
+        }
+        .change .bar3{
+            -webkit-transform: rotate(45deg) translate(-6px, -5px);
+            transform: rotate(45deg) translate(-6px, -5px);
+        }
+        .contentBox{
+            display: inline-block;
+            margin: 5px;
+        }
+        #header_pc, #header_mobile{
+            display: none;
+        }
+        @media screen and (max-width: 853px){
+            #header_pc{
+                display: none;
+            }
+            #header_mobile{
+                display: block;
+            }
+            span{
+                font-size: 26px;
+            }
+        }
+        @media screen and (min-width: 853px){
+            #header_pc{
+                display: block;
+            }
+            #header_mobile{
+                display: none;
+            }
+            span{
+                font-size: 32px;
+            }
+        }
+        .header-logo{
+            display: inline-block;
+            color: #333333;
+            font-size: 30px;
+            margin: 0;
+            line-height: 77px;
+        }
+        .header-h2{
+            display: inline-block;
+            /* margin-left: 1vw; */
+            cursor: pointer;
+            color: #333333;
+            transition: 0.3s;
+            padding: 10px 20px 10px 20px;
+            background-color: none;
+            border-radius: 10px;
+            font-size: 20px;
+        }
+        .header-h2:hover{
+            background-color: rgba(240, 240, 240, 0.8);
+        }
+        .close_but{
+            font-size: 50px;
+            cursor: pointer;
+            color: #333333;
+            transition: 0.3s;
+            padding: 6px 6px 12px 6px;
+            margin: -6px -6px -12px -6px;
+            background-color: none;
+            border-radius: 10px;
+            width: fit-content;
+            float: right;
+        }
+        .close_but:hover{
+            background-color: rgba(240, 240, 240, 0.8);
+        }
+        .footer_text{
+            font-size: 14px;
+            line-height: 18px;
+            margin: 4px 5px 4px 5px;
+            padding: 0;
+            display: inline;
+            cursor: pointer;
+        }
+        .footer_text:hover{
+            text-decoration: underline;
+        }
+    </style>
+    <style> /* text animation */
+        .textanimation{
+            text-align: center;
+            transform: scale(0.94);
+            animation: scale 3s forwards cubic-bezier(0.5, 1, 0.89, 1);
+        }
+        @keyframes scale{
+            100%{
+                transform: scale(1);
+            }
+        }
+        span, button{
+            display: inline-block;
+            opacity: 0;
+            filter: blur(4px);
+        }
+        span:nth-child(1){
+            animation: fade-in 0.8s 0.1s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+        span:nth-child(2){
+            animation: fade-in 0.8s 0.2s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+        span:nth-child(3){
+            animation: fade-in 0.8s 0.3s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+        span:nth-child(4){
+            animation: fade-in 0.8s 0.4s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+        span:nth-child(5){
+            animation: fade-in 0.8s 0.5s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+        span:nth-child(6){
+            animation: fade-in 0.8s 0.6s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+        span:nth-child(7){
+            animation: fade-in 0.8s 0.7s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+
+        span:nth-child(8){
+            animation: fade-in 0.8s 1.7s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+        span:nth-child(9){
+            animation: fade-in 0.8s 1.7s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+
+        span:nth-child(10){
+            animation: fade-in 0.8s 1.7s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+        span:nth-child(11){
+            animation: fade-in 0.8s 1.8s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+        span:nth-child(12){
+            animation: fade-in 0.8s 1.9s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+        span:nth-child(13){
+            animation: fade-in 0.8s 2.0s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+        span:nth-child(14){
+            animation: fade-in 0.8s 2.1s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+        span:nth-child(15){
+            animation: fade-in 0.8s 2.2s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+        span:nth-child(16){
+            animation: fade-in 0.8s 2.3s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+        span:nth-child(17){
+            animation: fade-in 0.8s 2.4s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+        span:nth-child(18){
+            animation: fade-in 0.8s 2.5s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+        span:nth-child(19){
+            animation: fade-in 0.8s 2.6s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+
+        button{
+            animation: fade-in 0.8s 3.6s forwards cubic-bezier(0.11, 0, 0.5, 0);
+        }
+        @keyframes fade-in{
+            100% {
+                opacity: 1;
+                filter: blur(0);
+            }
+        }
+    </style>
+    <style> /* scroll animation */
+        .arrows:before{
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            margin-left: -15px;
+            border-left: 5px solid rgba(0, 0, 0, 0.7);
+            border-bottom: 5px solid rgba(0, 0, 0, 0.7);
+            transform: translate(0px, 10px) rotate(-45deg);
+            animation: arrows 3s linear infinite;
+        }
+        .arrows:after{
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            margin-left: -15px;
+            border-left: 5px solid rgba(0, 0, 0, 0.7);
+            border-bottom: 5px solid rgba(0, 0, 0, 0.7);
+            transform: translate(0px, 0px) rotate(-45deg);
+            animation: arrows 3s linear infinite -1.5s;
+        }
+        @keyframes arrows {
+            0% {
+                border-left: 5px solid rgba(0, 0, 0, 0);
+                border-bottom: 5px solid rgba(0, 0, 0, 0);
+                transform: translate(0px, -20px) rotate(-45deg);
+            }
+            10%, 90% {
+                border-left: 5px solid rgba(0, 0, 0, 0);
+                border-bottom: 5px solid rgba(0, 0, 0, 0);
+            }
+            50% {
+                border-left: 5px solid rgba(0, 0, 0, 0.7);
+                border-bottom: 5px solid rgba(0, 0, 0, 0.7);
+                transform: translate(0px, 0px) rotate(-45deg);
+            }
+            100% {
+                border-left: 5px solid rgba(0, 0, 0, 0);
+                border-bottom: 5px solid rgba(0, 0, 0, 0);
+                transform: translate(0px, 20px) rotate(-45deg);
+            }
+        }
+    </style>
+    <style> /* loading animation */
+        .lds-ellipsis {
+            display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+        .lds-ellipsis div {
+            position: absolute;
+            top: 18px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: #ffffff;
+            animation-timing-function: cubic-bezier(0, 1, 1, 0);
+        }
+        .lds-ellipsis div:nth-child(1) {
+            left: 8px;
+            animation: lds-ellipsis1 0.6s infinite;
+        }
+        .lds-ellipsis div:nth-child(2) {
+            left: 8px;
+            animation: lds-ellipsis2 0.6s infinite;
+        }
+        .lds-ellipsis div:nth-child(3) {
+            left: 32px;
+            animation: lds-ellipsis2 0.6s infinite;
+        }
+        .lds-ellipsis div:nth-child(4) {
+            left: 56px;
+            animation: lds-ellipsis3 0.6s infinite;
+        }
+        @keyframes lds-ellipsis1 {
+            0% {
+                transform: scale(0);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        @keyframes lds-ellipsis3 {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(0);
+            }
+        }
+        @keyframes lds-ellipsis2 {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(24px, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="popupMenu" style="width: 100vw; height: 100vh; overflow-x: hidden; overflow-y: hidden; position: fixed; z-index: 2; background-color: rgba(255, 255, 255, 1); text-align: center; opacity: 0; visibility: hidden; transition: 0.3s; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);">
+        <div class="box" style="text-align: right; padding-right: 2%; height: 100vh; width: 100vw; display: flex; flex-direction: column; align-items: center;">
+            <h2 class="header-h2" onclick="alert('앱 준비 중입니다.')">앱 다운로드</h2>
+            <h2 class="header-h2" onclick="window.open('notice')">공지사항</h2>
+            <h2 class="header-h2" onclick="window.open('privacy-policy')">개인정보처리방침</h2>
+        </div>
+    </div>
+    <header id="header_pc" style="width: 100vw; text-align: center; z-index: 3; position: fixed; background-color: #ffffff;">
+        <div style="float: left; width: 20%; text-align: left; padding-left: 2%;">
+            <h2 class="header-logo">🤟 Skrr</h2>
+        </div>
+        <div style="float: right; width: 76%; text-align: right; padding-right: 2%;">
+            <h2 class="header-h2" onclick="alert('앱 준비 중입니다.')">앱 다운로드</h2>
+            <h2 class="header-h2" onclick="window.open('notice')">공지사항</h2>
+            <h2 class="header-h2" onclick="window.open('privacy-policy')">개인정보처리방침</h2>
+        </div>
+    </header>
+    <header id="header_mobile" style="width: 100vw; text-align: center; z-index: 3; position: fixed; background-color: #ffffff;">
+        <div style="float: left; width: 48%; text-align: left; padding-left: 2%;">
+            <h2 class="header-logo">🤟 Skrr</h2>
+        </div>
+        <div style="float: right; width: 46%; text-align: right; padding-right: 4%;">
+            <div id="container" class="container" onclick="closeHamburger(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+        </div>
+    </header>
+    <div class="box" style="height: 100vh; background-image: linear-gradient( to bottom, rgba(255, 255, 255, 1), 10px, rgba(255, 255, 255, 0.3) ), url('img/vecteezy_using-social-media-network-notifications-3d-vector-banner_8079179.jpg'); background-repeat: no-repeat; background-position: center; background-size: cover; filter: brightness(1.1);">
+        <div style="width: 90vw; display: inline-block; text-align: center;">
+            <h1 class="textanimation">
+                <span>세상에는</span>
+                <span>정말</span>
+                <span>많은</span>
+                <span>SNS가</span>
+                <span>뿜어져</span>
+                <span>나오고</span>
+                <span>있어요.</span>
+                <br><br>
+                <span>그런데</span>
+                <span>세상에는</span>
+                <span>안전하고</span>
+                <span>단순한</span>
+                <span>SNS가</span>
+                <span>없기에</span>
+                <span>🤟Skrr이</span>
+                <span>세상에</span>
+                <span>나타난</span>
+                <span>거에요.</span>
+                <br>
+            </h1>
+        </div>
+        <div style="position: absolute; bottom: 76px;" id="subscribe">
+            <div class="arrows"></div>
+        </div>
+        <!-- <button class="subscribe_button">구독하기</button> -->
+    </div>
+    <style>
+        .boxMaxWidth{
+            max-width: 700px;
+            margin: 40px 0 40px 0;
+        }
+        .imgbox{
+            width: 300px;
+            height: 300px;
+            /* background-color: yellow !important; */
+        }
+        .textbox{
+            width: 400px;
+            height: 300px;
+            display: table;
+        }
+        .textbox > div{
+            display: table-cell;
+            height: 300px;
+            vertical-align: middle;
+        }
+        @media screen and (max-width: 750px){
+            .boxMaxWidth{
+                max-width: 90vw;
+                margin: 0;
+            }
+            .imgbox{
+                width: 200px;
+                height: 200px;
+            }
+            .textbox{
+                width: 90vw;
+                height: 200px;
+                display: table;
+            }
+            .textbox > div{
+                display: table-cell;
+                height: 200px;
+                vertical-align: top;
+            }
+            .textbox > div > h2{
+                font-size: 24px;
+                line-height: 28px;
+            }
+            .textbox > div > h3{
+                font-size: 18px;
+                margin: 20px 0 0 0;
+                line-height: 22px;
+            }
+            .textbox > div > h4{
+                font-size: 12px;
+                margin: 20px 0 0 0;
+                line-height: 16px;
+            }
+        }
+        @media screen and (min-width: 1050px){
+            .boxMaxWidth{
+                max-width: 1000px;
+                margin: 80px 0 80px 0;
+            }
+            .imgbox{
+                width: 400px;
+                height: 400px;
+            }
+            .textbox{
+                width: 600px;
+                height: 400px;
+                display: table;
+            }
+            .textbox > div{
+                display: table-cell;
+                height: 400px;
+                vertical-align: middle;
+            }
+            .textbox > div > h2{
+                font-size: 36px;
+                line-height: 40px;
+            }
+            .textbox > div > h3{
+                font-size: 26px;
+                margin: 20px 0 0 0;
+                line-height: 30px;
+            }
+            .textbox > div > h4{
+                font-size: 18px;
+                margin: 20px 0 0 0;
+                line-height: 22px;
+            }
+        }
+    </style>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>
+        AOS.init();
+    </script>
+    <div style="width: 100vw; background-color: #ffffff; margin-top: 50px; margin-bottom: 50px;">
+        <div class="boxMaxWidth" style="width: 100vw; display: inline-block; text-align: center !important;" data-aos="fade-up" data-aos-duration="1000">
+            <div class="imgbox" style="float: left; text-align: center;">
+                <img src="img/hands_12.png" style="width: 100%;">
+            </div>
+            <div class="textbox" style="float: left; text-align: left;">
+                <div>
+                    <h2 style="margin: 0; padding: 0;">소외되는 사람이 없도록</h2>
+                    <h3 style="color: #999999; padding: 0;">🤟Skrr은 SNS에서 소외되거나 따돌림받는 사람이 없는 세상을 만들기 위해 노력하고 있어요.</h3>
+                </div>
+            </div>
+        </div>
+        <div class="boxMaxWidth" style="width: 100vw; display: inline-block; text-align: center !important;" data-aos="fade-up" data-aos-duration="1000">
+            <div class="imgbox" style="float: left; text-align: center;">
+                <img src="img/hands_4.png" style="height: 100%;">
+            </div>
+            <div class="textbox" style="float: left; text-align: left;">
+                <div>
+                    <h2 style="margin: 0; padding: 0;">칭찬받아 마땅한</h2>
+                    <h3 style="color: #999999; padding: 0;">SNS를 하면서까지 슬픔받을 이유는 없잖아요? 🤟Skrr은 당신을 칭찬받게 만들어요.</h3>
+                </div>
+            </div>
+        </div>
+        <div class="boxMaxWidth" style="width: 100vw; display: inline-block; text-align: center !important;" data-aos="fade-up" data-aos-duration="1000">
+            <div class="imgbox" style="float: left; text-align: center;">
+                <img src="img/hands_9.png" style="height: 100%;">
+            </div>
+            <div class="textbox" style="float: left; text-align: left;">
+                <div>
+                    <h2 style="margin: 0; padding: 0;">언제나 무료로 제공</h2>
+                    <h3 style="color: #999999; padding: 0;">🤟Skrr은 돈보단 여러분의 이용이 더 중요해요. 더 나은 세상을 만들기 위해 무료로 서비스를 제공해요.</h3>
+                </div>
+            </div>
+        </div>
+        <div class="boxMaxWidth" style="width: 100vw; display: inline-block; text-align: center !important;" data-aos="fade-up" data-aos-duration="1000">
+            <div class="imgbox" style="float: left; text-align: center;">
+                <img src="img/hands_6.png" style="width: 100%;">
+            </div>
+            <div class="textbox" style="float: left; text-align: left;">
+                <div>
+                    <h2 style="margin: 0; padding: 0;">개인정보는 안전하게</h2>
+                    <h3 style="color: #999999; padding: 0;">소중한 개인정보는 <a style="color: #999999; cursor: pointer; text-decoration: underline;" onclick="window.open('privacy-policy')">개인정보처리방침↗</a>에 따라 안전하게 보관되고, 회원 탈퇴 시 즉시 삭제해요.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer style="width: 100vw; height: fit-content; background-color: #333333; text-align: center;">
+        <div style="width: 90vw; max-width: 1000px; color: #dddddd; text-align: left; display: inline-block;">
+            <br><br>
+            <p style="font-size: 18px; line-height: 22px; font-weight: bold; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">🤟 Skrr</p>
+            <div style="margin-left: -5px;">
+                <p class="footer_text" onclick="alert('앱 준비 중입니다.')">앱 다운로드 ↗</p>
+                <p class="footer_text" onclick="window.open('notice')">공지사항 ↗</p>
+                <p class="footer_text" onclick="window.open('privacy-policy')">개인정보처리방침 ↗</p>
+                <p class="footer_text" onclick="window.open('terms-of-service')">서비스 이용약관 ↗</p>
+            </div>
+            <br>
+            <p style="font-size: 14px; line-height: 18px; font-weight: bold; margin: 4px 0 8px 0; padding: 0; color: #eeeeee;">에이치제이컴퍼니 (HJCM)</p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">대표 : 김현준</p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">주소 : 경기도 용인시 기흥구 구성로 90, 208동 602호</p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">사업자등록번호 : <a style="text-decoration: underline; cursor: pointer;" onclick="window.open('https://www.ftc.go.kr/bizCommPop.do?wrkr_no=5146900433')">514-69-00433 ↗</a></p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">통신판매업신고번호 : 2021-용인기흥-2190</p>
+            <br>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #cccccc;">© 2023 🤟 Skrr. 모든 권리 보유.</p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #cccccc;">© 2023 🤟 Skrr. All rights reserved.</p>
+            <br>
+        </div>
+    </footer>
+    <script>
+        var openMenu = false;
+        function closeHamburger(x){
+            x.classList.toggle("change");
+            console.log(openMenu);
+            if(openMenu == false){
+                openMenu = true
+                document.getElementById("popupMenu").style.opacity = "1";
+                document.getElementById("popupMenu").style.visibility = "visible";
+            } else{
+                openMenu = false
+                document.getElementById("popupMenu").style.opacity = "0";
+                document.getElementById("popupMenu").style.visibility = "hidden";
+            }
+        }
+    </script>
+</body>
+</html>
