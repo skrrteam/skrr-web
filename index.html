@@ -119,6 +119,21 @@
                 transform: scale(1);
             }
         }
+        .bounce {
+            animation-duration: 0.3s;
+            animation-name: bounce;
+        }
+        @keyframes bounce {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 <body>
@@ -128,7 +143,7 @@
         <div style="height: fit-content; padding: 0; margin-top: 0px; margin-bottom: 0px; position: absolute;">
             <h3 style="font-size: 24px; font-family: 'Tenada' !important; margin-bottom: 6px; padding-bottom: 0;">2023년 3월 2일,</h3>
             <h3 style="font-size: 24px; font-family: 'Tenada' !important; margin-top: 0; padding-top: 0;">누가 널 좋아하는지 알려줄게.</h3>
-            <img src="/img/skrr_logo_text_white.png" style="width: 50vw; max-width: 300px; height: 23.6vw; max-height: 141.5px;">
+            <img src="/img/skrr_logo_text_white.png" style="width: 50vw; max-width: 300px; height: 23.6vw; max-height: 141.5px;" id="logo_tap_animation">
             <br>
             <h1 class="time" style="width: 46px; font-family: 'Tenada' !important;" id="timed">00</h1>
             <h1 class="time2" style="width: fit-content; font-family: 'Tenada' !important;">일</h1>
@@ -159,7 +174,14 @@
             document.getElementById("timem").innerHTML = String(m).padStart(2, '0');
             document.getElementById("times").innerHTML = String(s).padStart(2, '0');
         }
-        setInterval(remaindTime,1000);
+        setInterval(remaindTime, 1000);
+        element = document.getElementById("logo_tap_animation");
+        element.addEventListener("click", function(e) {
+            e.preventDefault;
+            element.classList.remove("bounce");
+            element.offsetWidth = element.offsetWidth;
+            element.classList.add("bounce");
+        }, false);
     </script>
 </body>
 </html>
