@@ -143,7 +143,7 @@
         <div style="height: fit-content; padding: 0; margin-top: 0px; margin-bottom: 0px; position: absolute;">
             <h3 style="font-size: 24px; font-family: 'Tenada' !important; margin-bottom: 6px; padding-bottom: 0;">2023년 3월 2일,</h3>
             <h3 style="font-size: 24px; font-family: 'Tenada' !important; margin-top: 0; padding-top: 0;">누가 널 좋아하는지 알려줄게.</h3>
-            <img src="/img/skrr_logo_text_white.png" style="width: 50vw; max-width: 300px; height: 23.6vw; max-height: 141.5px;" id="logo_tap_animation">
+            <img src="/img/skrr_logo_text_white.png" style="width: 50vw; max-width: 300px; height: 23.6vw; max-height: 141.5px;" id="logo_tap_animation" onclick="sharing()">
             <br>
             <h1 class="time" style="width: 46px; font-family: 'Tenada' !important;" id="timed">00</h1>
             <h1 class="time2" style="width: fit-content; font-family: 'Tenada' !important;">일</h1>
@@ -182,6 +182,19 @@
             element.offsetWidth = element.offsetWidth;
             element.classList.add("bounce");
         }, false);
+        function sharing(){
+            if(navigator.userAgent.match(/android/i)){
+                window.open("https://play.google.com/store/apps/details?id=com.skrrteam.skrr","sharing1","width='100%',height='100%'");
+            } else if(navigator.userAgent.match(/(iphone)|(ipod)|(ipad)/i))	{
+                var visitedAt = (new Date()).getTime(); 
+                setTimeout(
+                    function(){
+                        if((new Date()).getTime() - visitedAt < 2000){
+                            location.href = "https://itunes.apple.com/kr/app/id1670584329";
+                        }
+                }, 500);
+            }
+        }
     </script>
 </body>
 </html>
