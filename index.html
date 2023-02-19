@@ -8,6 +8,12 @@
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap');
+        @font-face {
+            font-family: 'Tenada';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Tenada.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
         *{
             font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif !important;
             /* word-break: keep-all; */
@@ -388,6 +394,29 @@
                 transform: translate(24px, 0);
             }
         }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            20% {
+                transform: scale(1);
+            }
+            35% {
+                transform: scale(1.05);
+            }
+            50% {
+                transform: scale(1);
+            }
+            65% {
+                transform: scale(1.05);
+            }
+            80% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 <body>
@@ -422,31 +451,12 @@
             </div>
         </div>
     </header>
-    <div class="box" style="height: 100vh; background-image: linear-gradient( to bottom, rgba(255, 255, 255, 1), 10px, rgba(255, 255, 255, 0.3) ), url('img/vecteezy_using-social-media-network-notifications-3d-vector-banner_8079179.jpg'); background-repeat: no-repeat; background-position: center; background-size: cover; filter: brightness(1.1);">
-        <div style="width: 90vw; display: inline-block; text-align: center;">
-            <h1 class="textanimation">
-                <span>세상에는</span>
-                <span>정말</span>
-                <span>많은</span>
-                <span>SNS가</span>
-                <span>뿜어져</span>
-                <span>나오고</span>
-                <span>있어요.</span>
-                <br><br>
-                <span>그런데</span>
-                <span>세상에는</span>
-                <span>안전하고</span>
-                <span>단순한</span>
-                <span>SNS가</span>
-                <span>없기에</span>
-                <span>🤟Skrr이</span>
-                <span>세상에</span>
-                <span>나타난</span>
-                <span>거에요.</span>
-                <br>
-            </h1>
+    <div class="box" style="height: 100vh; background-color: #111111; position: relative;">
+        <img src="/img/icon.png" style="animation: pulse 1.2s linear infinite; width: 90vw; max-width: 600px; height: 90vw; max-height: 600px; position: absolute;">
+        <div style="height: fit-content; padding: 0; margin-top: 0px; margin-bottom: 0px; position: absolute;">
+            <h3 style="font-size: 24px; font-family: 'Tenada' !important; margin-top: 0; padding-top: 0;">누가 널 좋아하는지 알려줄게.</h3>
         </div>
-        <div style="position: absolute; bottom: 76px;" id="subscribe">
+        <div style="position: fixed; bottom: 76px;" id="subscribe">
             <div class="arrows"></div>
         </div>
         <!-- <button class="subscribe_button">구독하기</button> -->
