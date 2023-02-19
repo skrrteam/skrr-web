@@ -115,7 +115,7 @@
         .bar1, .bar2, .bar3{
             width: 30px;
             height: 4px;
-            background-color: #333333;
+            background-color: #FFFFFF;
             margin: 4px 0;
             transition: 0.3s;
         }
@@ -300,8 +300,8 @@
             width: 30px;
             height: 30px;
             margin-left: -15px;
-            border-left: 5px solid rgba(0, 0, 0, 0.7);
-            border-bottom: 5px solid rgba(0, 0, 0, 0.7);
+            border-left: 5px solid rgba(255, 255, 255, 0.7);
+            border-bottom: 5px solid rgba(255, 255, 255, 0.7);
             transform: translate(0px, 10px) rotate(-45deg);
             animation: arrows 3s linear infinite;
         }
@@ -311,29 +311,29 @@
             width: 30px;
             height: 30px;
             margin-left: -15px;
-            border-left: 5px solid rgba(0, 0, 0, 0.7);
-            border-bottom: 5px solid rgba(0, 0, 0, 0.7);
+            border-left: 5px solid rgba(255, 255, 255, 0.7);
+            border-bottom: 5px solid rgba(255, 255, 255, 0.7);
             transform: translate(0px, 0px) rotate(-45deg);
             animation: arrows 3s linear infinite -1.5s;
         }
         @keyframes arrows {
             0% {
-                border-left: 5px solid rgba(0, 0, 0, 0);
-                border-bottom: 5px solid rgba(0, 0, 0, 0);
+                border-left: 5px solid rgba(255, 255, 255, 0);
+                border-bottom: 5px solid rgba(255, 255, 255, 0);
                 transform: translate(0px, -20px) rotate(-45deg);
             }
             10%, 90% {
-                border-left: 5px solid rgba(0, 0, 0, 0);
-                border-bottom: 5px solid rgba(0, 0, 0, 0);
+                border-left: 5px solid rgba(255, 255, 255, 0);
+                border-bottom: 5px solid rgba(255, 255, 255, 0);
             }
             50% {
-                border-left: 5px solid rgba(0, 0, 0, 0.7);
-                border-bottom: 5px solid rgba(0, 0, 0, 0.7);
+                border-left: 5px solid rgba(255, 255, 255, 0.7);
+                border-bottom: 5px solid rgba(255, 255, 255, 0.7);
                 transform: translate(0px, 0px) rotate(-45deg);
             }
             100% {
-                border-left: 5px solid rgba(0, 0, 0, 0);
-                border-bottom: 5px solid rgba(0, 0, 0, 0);
+                border-left: 5px solid rgba(255, 255, 255, 0);
+                border-bottom: 5px solid rgba(255, 255, 255, 0);
                 transform: translate(0px, 20px) rotate(-45deg);
             }
         }
@@ -430,7 +430,7 @@
     </div>
     <header id="header_pc" style="width: 100vw; text-align: center; z-index: 3; position: fixed; background-color: #111111;">
         <div style="float: left; width: 20%; text-align: left; padding-left: 2%;">
-            <img src="/img/skrr_logo_text_white.png" style="width: 50px; height: 23.6px;">
+            <img src="/img/skrr_logo_text_white.png" style="width: 100px; height: 47.2px; margin-top: 15px;">
         </div>
         <div style="float: right; width: 76%; text-align: right; padding-right: 2%;">
             <h2 class="header-h2" onclick="sharing()">앱 다운로드</h2>
@@ -441,7 +441,7 @@
     </header>
     <header id="header_mobile" style="width: 100vw; text-align: center; z-index: 3; position: fixed; background-color: #111111;">
         <div style="float: left; width: 48%; text-align: left; padding-left: 2%;">
-            <img src="/img/skrr_logo_text_white.png" style="width: 50px; height: 23.6px;">
+            <img src="/img/skrr_logo_text_white.png" style="width: 100px; height: 47.2px; margin-top: 15px;">
         </div>
         <div style="float: right; width: 46%; text-align: right; padding-right: 4%;">
             <div id="container" class="container" onclick="closeHamburger(this)">
