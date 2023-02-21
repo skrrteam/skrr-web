@@ -98,6 +98,10 @@
                 // formBody = formBody.join("&");
                 fetch("https://api.skrr.app/dataremove", {
                     method: "POST",
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
                     body: JSON.stringify({id: document.getElementById("user_id").value, password: document.getElementById("user_pw").value})
                 })
                 .then((response) => response.json())
