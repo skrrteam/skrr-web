@@ -77,18 +77,18 @@
         <p>Skrr 탈퇴 시 모든 개인정보는 즉시 삭제되며, 해당 ID로 연결된 모든 기기는 기능 작동이 멈추게 돼요.</p>
         <br><br>
         <input type="text" id="user_id" placeholder="아이디">
-        <br>
+        <br><br>
         <input type="text" id="user_pw" placeholder="비밀번호">
-        <br>
+        <br><br>
         <input id="load_be" type="button" value="탈퇴하기" onclick="gogo()">
         <br>
         <br><br>
         <script>
             function gogo(){
-                var details = {
-                    'id': document.getElementById("user_id").value,
-                    'password': document.getElementById("user_pw").value
-                };
+                // var details = {
+                //     'id': document.getElementById("user_id").value,
+                //     'password': document.getElementById("user_pw").value
+                // };
                 // var formBody = [];
                 // for(var property in details){
                 //     var encodedKey = encodeURIComponent(property);
@@ -98,7 +98,7 @@
                 // formBody = formBody.join("&");
                 fetch("https://api.skrr.app/dataremove", {
                     method: "POST",
-                    body: details
+                    body: JSON.stringify({id: document.getElementById("user_id").value, password: document.getElementById("user_pw").value})
                 })
                 .then((response) => response.json())
                 .then((data) => {
