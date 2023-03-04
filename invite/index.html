@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skrr 친구 초대장</title>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap');
+        @font-face {
+            font-family: 'Tenada';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Tenada.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        *{
+            font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif !important;
+            word-break: keep-all;
+        }
+        html, body{
+            font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif !important;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #fff;
+            background-color: #111111;
+            overflow: hidden;
+        }
+        .box{
+            position: fixed;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+            background-color: #111111;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Skrr 친구 초대장을 받았어요!</h2>
+        <p>Skrr에서 친구를 추가하고 누가 날 좋아하는지 알아보세요!</p>
+        <br><br><br>
+        <h3 onclick="sharing()" style="display: inline-block; cursor: pointer; color: #FFFFFF; padding: 10px 20px 10px 20px; border-radius: 10px; font-size: 20px; background-color: rgba(240, 240, 240, 0.6); margin-top: 0;">앱 열고 친구 추가하기 ↗</h3>
+    </div>
+    <script>
+        function sharing(){
+            var userAgent = navigator.userAgent;
+            var visitTime = (new Date()).getTime();
+            if (userAgent.match(/Android/i)) {
+                location.href = 'intent://main_web#Intent;scheme="skrr://";package="com.skrrteam.skrr"';
+            } else if (userAgent.match(/iPhone/i)) {
+                setTimeout(function() {
+                    if ((new Date()).getTime() - visitTime < 3000) {
+                        location.href = "itms-apps://itunes.apple.com/app/1670584329";
+                    }
+                } ,2500);
+                setTimeout(function() {
+                    location.href = "skrr://";
+                } ,0);
+            } else{
+                alert("모바일에서 확인해 주세요.");
+            }
+        }
+    </script>
+</body>
+</html>
