@@ -50,19 +50,20 @@
         <h3 onclick="sharing()" style="display: inline-block; cursor: pointer; color: #FFFFFF; padding: 10px 20px 10px 20px; border-radius: 10px; font-size: 16px; background-color: rgba(240, 240, 240, 0.6); margin-top: 0;">앱에서 친구 추가하기 ↗</h3>
     </div>
     <script>
+        var uid = Object.fromEntries((new URLSearchParams(window.location.search)).entries())["uid"];
         function sharing(){
             var userAgent = navigator.userAgent;
             var visitTime = (new Date()).getTime();
             if (userAgent.match(/Android/i)) {
-                location.href = 'intent://main_web#Intent;scheme="skrr://";package="com.skrrteam.skrr"';
-            } else if (userAgent.match(/iPhone/i)) {
+                location.href = "intent://invite/" + uid + "#Intent;scheme=skrr;package=com.skrrteam.skrr;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.skrrteam.skrr;end";
+            } else if (userAgent.match(/iPhone|iPad|iPod/i)) {
                 setTimeout(function() {
                     if ((new Date()).getTime() - visitTime < 3000) {
                         location.href = "itms-apps://itunes.apple.com/app/1670584329";
                     }
                 } ,2500);
                 setTimeout(function() {
-                    location.href = "skrr://";
+                    location.href = "skrr://invite/" + uid;
                 } ,0);
             } else{
                 alert("모바일에서 확인해 주세요.");
