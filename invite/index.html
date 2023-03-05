@@ -71,10 +71,10 @@
                 location.href = "intent://invite/invite/" + uid + "#Intent;scheme=skrr;package=com.skrrteam.skrr;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.skrrteam.skrr;end";
             } else if (userAgent.match(/iPhone|iPad|iPod/i)) {
                 setTimeout(function() {
-                    if ((new Date()).getTime() - visitTime < 1000) {
+                    if ((new Date()).getTime() - visitTime < 3000) {
                         location.href = "itms-apps://itunes.apple.com/app/1670584329";
                     }
-                } ,500);
+                } ,2500);
                 setTimeout(function() {
                     location.href = "skrr://invite/" + uid;
                 } ,0);
