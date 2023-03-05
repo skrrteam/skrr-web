@@ -42,16 +42,24 @@
     </style>
 </head>
 <body>
-    <div class="box">
-        <img src="/img/envelope.png" style="width: 50vw; max-width: 300px; height: 50vw; max-height: 300px;">
-        <br><br>
-        <h2>Skrr 친구 초대장을 받았어요!</h2>
-        <p>Skrr에서 친구를 추가하고 누가 날 좋아하는지 알아보세요!</p>
-        <br><br>
-        <h3 onclick="sharing()" style="display: inline-block; cursor: pointer; color: #FFFFFF; padding: 10px 20px 10px 20px; border-radius: 10px; font-size: 16px; background-color: rgba(240, 240, 240, 0.6); margin-top: 0;">앱에서 친구 추가하기 ↗</h3>
+    <div class="box" style="position: relative;">
+        <canvas style="--gradient-color-1: #5b1146; --gradient-color-2: #021c78; --gradient-color-3: #125669; --gradient-color-4: #017245; position: absolute; width: calc(100vw + 40px); height: calc(100vh + 40px); filter: blur(20px);" id="gradient-canvas" data-transition-in></canvas>
+        <div style="height: fit-content; padding: 0; margin-top: 0px; margin-bottom: 0px; position: absolute; padding: 40px 20px 30px 20px; margin: 10px; background: rgba( 0, 0, 0, 0.5 ); box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 ); backdrop-filter: blur( 4px ); -webkit-backdrop-filter: blur( 4px ); border-radius: 20px; border: 2px solid rgba( 255, 255, 255, 0.18 );">
+            <img src="/img/envelope.png" style="width: 40vw; max-width: 200px; height: 40vw; max-height: 200px;">
+            <br><br>
+            <h2>Skrr 친구 초대장을 받았어요!</h2>
+            <p>Skrr에서 친구를 추가하고 누가 날 좋아하는지 알아보세요!</p>
+            <br>
+            <h3 onclick="sharing()" style="display: inline-block; cursor: pointer; color: #FFFFFF; padding: 10px 20px 10px 20px; border-radius: 10px; font-size: 16px; background-color: rgba(240, 240, 240, 0.6); margin-top: 0;">앱에서 친구 추가하기 ↗</h3>
+        </div>
     </div>
+    <script src="Gradient.js"></script>
     <script>
-        var uid = Object.fromEntries((new URLSearchParams(window.location.search)).entries())["uid"];
+        var gradient = new Gradient;
+        gradient.initGradient("#gradient-canvas");
+    </script>
+    <script>
+        // var uid = Object.fromEntries((new URLSearchParams(window.location.search)).entries())["uid"];
         function sharing(){
             var userAgent = navigator.userAgent;
             var visitTime = (new Date()).getTime();
