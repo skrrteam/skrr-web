@@ -55,7 +55,7 @@
             var userAgent = navigator.userAgent;
             var visitTime = (new Date()).getTime();
             if (userAgent.match(/Android/i)) {
-                location.href = "intent://invite/" + uid + "#Intent;scheme=skrr;package=com.skrrteam.skrr;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.skrrteam.skrr;end";
+                location.href = "intent://invite/invite/" + uid + "#Intent;scheme=skrr;package=com.skrrteam.skrr;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.skrrteam.skrr;end";
             } else if (userAgent.match(/iPhone|iPad|iPod/i)) {
                 setTimeout(function() {
                     if ((new Date()).getTime() - visitTime < 1000) {
