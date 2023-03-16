@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="skrr,낙ㄱ,스컬,sns,앙케이트,앙케트,투표,선거,선택,질문,답변,친구,학교,초등학교,중학교,고등학교,인기투표,게임,소셜네트워크,소셜네트워킹">
+    <meta name="description" content="누가 널 좋아하는지 알려줄게, Skrr하게.">
+    <link rel="icon" type="image/x-icon" href="https://skrr.app/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://skrr.app/favicon.png">
+    <meta property="og:site_name" content="누가 널 좋아하는지 알려줄게, Skrr하게.">
+    <meta property="og:title" content="누가 널 좋아하는지 알려줄게, Skrr하게.">
+    <meta property="og:description" content="누가 널 좋아하는지 알려줄게, Skrr하게.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://skrr.app/reservation">
+    <meta property="og:image" content="https://skrr.app/ogimg.png">
+    <title>누가 널 좋아하는지 알려줄게, Skrr하게.</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"> 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> 
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap');
+        @font-face {
+            font-family: 'Tenada';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Tenada.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        *{
+            font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif !important;
+            word-break: keep-all;
+        }
+        html, body{
+            font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif !important;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #fff;
+            background-color: #222222;
+        }
+        .box{
+            position: fixed;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+            background-color: #111111;
+            position: relative;
+        }
+        p{
+            margin-bottom: 10px;
+            line-height: 24px;
+        }
+        a{
+            margin-left: 2px;
+        }
+        hr{
+            border: 0.6px #dfe0e4 solid;
+            margin-top: 16px;
+        }
+        h1{
+            margin-bottom: 0px;
+        }
+        .time{
+            display: inline-block;
+            text-align: right;
+        }
+        .time2{
+            display: inline-block;
+            text-align: center;
+            font-size: 20px;
+            color: #fff;
+        }
+        .loading{
+            border: none;
+            border-radius: 4px;
+            width: calc(90vw - 20px);
+            max-width: 580px;
+            height: 50px;
+            padding-left: 10px;
+            padding-right: 10px;
+            color: #FFFFFF;
+            background-color: #333333;
+            cursor: pointer;
+        }
+        video{
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+        }
+        table{
+            border-top: 1px solid #ffffff;
+            border-bottom: 1px solid #ffffff;
+            border-collapse: collapse;
+        }
+        .table-h1{
+            color: #ffffff;
+            line-height: 60px;
+            font-family: 'Noto Serif KR', serif !important;
+            font-size: 40px;
+            padding: 0;
+            margin: 0;
+            margin-top: -5px;
+            width: 65px;
+            text-align: center;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            20% {
+                transform: scale(1);
+            }
+            35% {
+                transform: scale(1.05);
+            }
+            50% {
+                transform: scale(1);
+            }
+            65% {
+                transform: scale(1.05);
+            }
+            80% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .bounce {
+            animation-duration: 0.3s;
+            animation-name: bounce;
+        }
+        @keyframes bounce {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .footer_text{
+            font-size: 14px;
+            line-height: 18px;
+            margin: 4px 5px 4px 5px;
+            padding: 0;
+            display: inline;
+            cursor: pointer;
+        }
+        .footer_text:hover{
+            text-decoration: underline;
+        }
+        .floating-btn {
+            position: fixed;
+            width: 90vw;
+            max-width: 600px;
+            line-height: 30px;
+            bottom: 20px;
+            background-color: #0EF8A4;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-sizing: border-box;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+            font-weight: bold;
+        }
+        .floating-btn:hover {
+            background-color: #fff;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 90vw; max-width: 600px; display: inline-block; margin-top: 50px;">
+        <p id="reservationNow" class="floating-btn" style="z-index: 100;">누가 날 좋아하는지 보러가기</p>
+        <h1 style="font-family: 'Tenada' !important; font-size: 24px; margin-bottom: 0;">2023년 4월 1일,</h1>
+        <h1 style="font-family: 'Tenada' !important; font-size: 24px; margin-top: 6px;">누가 널 좋아하는지 알려줄게, Skrr하게.</h1>
+        <h1 class="time" style="width: 46px; font-family: 'Tenada' !important;" id="timed">00</h1>
+        <h1 class="time2" style="width: fit-content; font-family: 'Tenada' !important;">일</h1>
+        <h1 class="time" style="width: 46px; font-family: 'Tenada' !important;" id="timeh">00</h1>
+        <h1 class="time2" style="width: fit-content; font-family: 'Tenada' !important;">시간</h1>
+        <h1 class="time" style="width: 46px; font-family: 'Tenada' !important;" id="timem">00</h1>
+        <h1 class="time2" style="width: fit-content; font-family: 'Tenada' !important;">분</h1>
+        <h1 class="time" style="width: 46px; font-family: 'Tenada' !important;" id="times">00</h1>
+        <h1 class="time2" style="width: fit-content; font-family: 'Tenada' !important;">초</h1>
+        <br><br>
+        <img data-aos="fade-up" src="/img/icon-cutout.png" style="animation: pulse 1.2s linear infinite; width: 60vw; max-width: 400px;">
+        <h1 data-aos="fade-up" style="margin-top: 50px; margin-bottom: 30px; font-family: 'Tenada' !important;">누가 당신을 좋아하는지 알아보세요!</h1>
+        <br>
+        <img data-aos="fade-up" src="/img/webimg_1.png" style="width: 90vw; max-width: 600px;">
+        <br><br>
+        <img data-aos="fade-up" src="/img/webimg_2.png" style="width: 90vw; max-width: 600px;">
+        <br><br>
+        <img data-aos="fade-up" src="/img/webimg_3.png" style="width: 90vw; max-width: 600px;">
+        <br><br>
+        <h1 data-aos="fade-up" style="margin-top: 50px; margin-bottom: 50px; font-family: 'Tenada' !important;">익명으로 친구에게 투표하세요!</h1>
+        <img data-aos="fade-up" src="/img/webimg_7.png" style="width: 90vw; max-width: 600px;">
+        <br><br>
+        <h1 data-aos="fade-up" style="display: block; margin-top: 50px; margin-bottom: 10px; font-family: 'Tenada' !important;">초성 힌트를 통해 나에게 투표한 사람을 추측해 보세요!</h1>
+        <img data-aos="fade-up" src="/img/webimg_6.png" style="width: 90vw; max-width: 600px;">
+        <br>
+        <h1 data-aos="fade-up" style="display: block; margin-top: 50px; margin-bottom: 10px; font-family: 'Tenada' !important;">지금 바로 사전예약하세요!</h1>
+        <div data-aos="fade-up" style="cursor: pointer;" onclick="kakaoLogin()">
+            <img src="https://stay.kimain.me/messages.png" style="width: 20px; height: 18px; background-color: #FEE501; float: left; margin-top: 16px; margin-left: 20px;">
+            <p style="background-color: #FEE501; border-radius: 10px; line-height: 50px; color: #000;">개인정보 노출 없이 카카오로 사전예약하기</p>
+        </div>
+        <br><br>
+    </div>
+    <footer style="width: 100vw; height: fit-content; background-color: #333333; text-align: center;">
+        <div style="width: 90vw; max-width: 1000px; color: #dddddd; text-align: left; display: inline-block;">
+            <br><br>
+            <img src="https://skrr.app/img/skrr_logo_text_white.png" style="width: 50px; height: 23.6px; margin: 4px 0 4px 0;"><br>
+            <div style="margin-left: -5px;">
+                <p class="footer_text" onclick="sharing()">앱 다운로드 ↗</p>
+                <p class="footer_text" onclick="window.open('https://support.skrr.app')">문의하기 ↗</p>
+                <p class="footer_text" onclick="window.open('https://skrr.app/notice')">공지사항 ↗</p>
+                <p class="footer_text" onclick="window.open('https://skrr.app/privacy-policy')">개인정보처리방침 ↗</p>
+                <p class="footer_text" onclick="window.open('https://skrr.app/terms-of-service')">서비스 이용약관 ↗</p>
+            </div>
+            <br>
+            <p style="font-size: 14px; line-height: 18px; font-weight: bold; margin: 4px 0 8px 0; padding: 0; color: #eeeeee;">에이치제이컴퍼니 (HJCM)</p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">대표 : 김현준</p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">사업자등록번호 : <a style="text-decoration: underline; cursor: pointer;" onclick="window.open('https://www.ftc.go.kr/bizCommPop.do?wrkr_no=5146900433')">514-69-00433 ↗</a></p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">통신판매업신고번호 : 2021-용인기흥-2190</p>
+            <br>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #cccccc;">© 2023 Skrr Team. 모든 권리 보유.</p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #cccccc;">© 2023 Skrr Team. All rights reserved.</p>
+            <br>
+        </div>
+    </footer>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>
+        AOS.init();
+        document.getElementById("reservationNow").addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.getElementById("reservation");
+            target.scrollIntoView({behavior: 'smooth'});
+        });
+        remaindTime();
+        function remaindTime() {
+            var now = new Date();
+            var open = new Date(2023,03,01,00,00,00);
+            var nt = now.getTime();
+            var ot = open.getTime();
+            var remaind = ot - nt;
+            var d = Math.floor(remaind / (1000 * 60 * 60 * 24));
+            var h = Math.floor((remaind % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var m = Math.floor((remaind % (1000 * 60 * 60)) / (1000 * 60));
+            var s = Math.floor((remaind % (1000 * 60)) / 1000);
+            document.getElementById("timed").innerHTML = String(d).padStart(2, '0');
+            document.getElementById("timeh").innerHTML = String(h).padStart(2, '0');
+            document.getElementById("timem").innerHTML = String(m).padStart(2, '0');
+            document.getElementById("times").innerHTML = String(s).padStart(2, '0');
+        }
+        setInterval(remaindTime, 1000);
+
+        Kakao.init('0d762501292abf3f6ea251ce68bfbae4');
+        console.log(Kakao.isInitialized());
+        function kakaoLogin() {
+            Kakao.Auth.login({
+                success: function (response) {
+                    Kakao.API.request({
+                        url: '/v2/user/me',
+                        success: function (response) {
+                            console.log(response)
+                            fetch('https://skrr.app/reservation', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({kakaoUID: str(response.id)})
+                            })
+                            .then(response => response.text())
+                            .then(data => console.log(data))
+                            .catch(error => console.error(error));
+                        },
+                        fail: function (error) {
+                            console.log(error)
+                        },
+                    })
+                },
+                fail: function (error) {
+                    console.log(error)
+                },
+            })
+        }
+    </script>
+</body>
+</html>
