@@ -179,10 +179,12 @@
     </style>
 </head>
 <body>
-    <div style="width: 90vw; max-width: 600px; display: inline-block; margin-top: 50px;">
+    <div style="width: 90vw; max-width: 600px; display: inline-block;">
+        <p id="insta1" style="display: none; width: 90vw; max-width: 600px; text-align: right; font-size: 12px; line-height: 14px; margin: 10px 0 0 0;">시스템 브라우저에서 열기를 탭해주세요 ↗</p>
+        <p id="insta2" style="display: none; width: 90vw; max-width: 600px; text-align: right; font-size: 12px; line-height: 14px; margin: 0;">인스타그램에서 바로 사전예약할 순 없어요</p>
         <p onclick="$('html, body').animate({ scrollTop: $('#reservationNow').offset().top }, 1000);" class="floating-btn" style="z-index: 100;">누가 날 좋아하는지 보러가기</p>
         <!-- <h1 style="font-family: 'Tenada' !important; font-size: 24px; margin-bottom: 0;">2023년 4월 1일,</h1> -->
-        <h1 style="font-family: 'Tenada' !important; font-size: 36px; margin-top: 6px;">누가 널 좋아하는지 알려줄게, Skrr하게.</h1>
+        <h1 style="font-family: 'Tenada' !important; font-size: 36px; margin-top: 50px;">누가 널 좋아하는지 알려줄게, Skrr하게.</h1>
         <h1 class="time" style="width: 36px; font-family: 'Tenada' !important;" id="timed">00</h1>
         <h1 class="time2" style="width: fit-content; font-family: 'Tenada' !important;">일</h1>
         <h1 class="time" style="width: 36px; font-family: 'Tenada' !important;" id="timeh">00</h1>
@@ -241,6 +243,10 @@
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script>
         AOS.init();
+        if(/Instagram/.test(navigator.userAgent)){
+            document.getElementById("insta1").style.display = "block";
+            document.getElementById("insta2").style.display = "block";
+        }
         remaindTime();
         function remaindTime() {
             var now = new Date();
