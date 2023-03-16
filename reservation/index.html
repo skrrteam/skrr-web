@@ -260,6 +260,7 @@
         Kakao.init('0d762501292abf3f6ea251ce68bfbae4');
         console.log(Kakao.isInitialized());
         function kakaoLogin() {
+            alert("카카오 로그인 후 사전예약이 완료되었다는 메시지가 표시되어야 해요.\n\n사전예약이 완료되었다는 메시지가 표시되지 않는다면 다시 로그인해 주세요.");
             Kakao.Auth.login({
                 success: function (response) {
                     Kakao.API.request({
