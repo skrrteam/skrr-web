@@ -281,8 +281,15 @@
                                 body: JSON.stringify({kakaoUID: String(response.id)})
                             })
                             .then(response => response.text())
-                            .then(data => console.log(data))
-                            .catch(error => console.error(error));
+                            .then(data => {
+                                if(data == "Success"){
+                                    alert("사전예약이 완료되었어요! 4월 1일, 당신을 좋아하는 사람이 누군지와 함께 돌아올게요!");
+                                } else if(data == "Reserved"){
+                                    alert("이미 사전예약되었어요! 4월 1일까지 조금만 더 기다려 주세요!");
+                                } else{
+                                    alert("알 수 없는 오류가 발생했어요. 고객센터(카카오톡에서 “Skrr” 검색)로 문의해 주세요.");
+                                }
+                            })
                         },
                         fail: function (error) {
                             console.log(error)
