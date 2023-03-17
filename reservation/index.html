@@ -264,7 +264,7 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({kakaoUID: String(response.id)})
+                    body: JSON.stringify({kakaoUID: document.getElementById("phoneNumber").value})
                 })
                 .then(response => response.text())
                 .then(data => {
