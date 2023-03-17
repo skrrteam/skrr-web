@@ -181,7 +181,7 @@
 <body>
     <div style="width: 90vw; max-width: 600px; display: inline-block;">
         <p id="insta1" style="display: none; width: 90vw; max-width: 600px; text-align: right; font-size: 12px; line-height: 14px; margin: 10px 0 0 0;">시스템 브라우저에서 열기를 탭해주세요 ↗</p>
-        <p id="insta2" style="display: none; width: 90vw; max-width: 600px; text-align: right; font-size: 12px; line-height: 14px; margin: 0;">인스타그램에서 바로 사전예약할 순 없어요</p>
+        <p id="insta2" style="display: none; width: 90vw; max-width: 600px; text-align: right; font-size: 12px; line-height: 14px; margin: 0;">인스타그램에서는 바로 사전예약할 수 없어요</p>
         <p onclick="$('html, body').animate({ scrollTop: $('#reservationNow').offset().top }, 1000);" class="floating-btn" style="z-index: 100;">누가 날 좋아하는지 보러가기</p>
         <!-- <h1 style="font-family: 'Tenada' !important; font-size: 24px; margin-bottom: 0;">2023년 4월 1일,</h1> -->
         <h1 style="font-family: 'Tenada' !important; font-size: 36px; margin-top: 50px;">누가 널 좋아하는지 알려줄게, Skrr하게.</h1>
@@ -213,6 +213,10 @@
         <div data-aos="fade-up" style="cursor: pointer;" onclick="kakaoLogin()" id="reservationNow">
             <img src="https://stay.kimain.me/messages.png" style="width: 20px; height: 18px; background-color: #FEE501; float: left; margin-top: 16px; margin-left: 20px;">
             <p style="background-color: #FEE501; border-radius: 10px; line-height: 50px; color: #000;">카카오로 1초만에 사전예약하기</p>
+        </div>
+        <div data-aos="fade-up" style="cursor: pointer; display: none;" id="insta_info">
+            <p style="background-color: #333; border-radius: 10px; line-height: 20px; color: #fff;">인스타그램에서는 바로 사전예약할 수 없어요</p>
+            <p style="background-color: #333; border-radius: 10px; line-height: 20px; color: #fff;">...을 탭하고 '시스템 브라우저에서 열기'를 탭해주세요</p>
         </div>
         <p style="font-size: 12px; line-height: 14px;">카카오 로그인 후 사전예약이 완료되었다는 알림이 표시되어야 해요.</p>
         <p style="font-size: 12px; line-height: 14px;">사전예약이 완료되었다는 알림이 표시되지 않는다면 다시 로그인해 주세요.</p>
@@ -246,6 +250,8 @@
         if(/Instagram/.test(navigator.userAgent)){
             document.getElementById("insta1").style.display = "block";
             document.getElementById("insta2").style.display = "block";
+            document.getElementById("insta_info").style.display = "block";
+            document.getElementById("reservationNow").style.display = "none";
         }
         remaindTime();
         function remaindTime() {
