@@ -214,9 +214,10 @@
             <img src="https://stay.kimain.me/messages.png" style="width: 20px; height: 18px; background-color: #FEE501; float: left; margin-top: 16px; margin-left: 20px;">
             <p style="background-color: #FEE501; border-radius: 10px; line-height: 50px; color: #000;">카카오로 1초만에 사전예약하기</p>
         </div>
+        <p style="font-family: 'Tenada' !important;">OR</p>
         <div data-aos="fade-up" style="cursor: pointer; display: none; background-color: #fff; border-radius: 10px; padding 6px 0 6px 0;" id="insta_info">
-            <p style="color: #000; font-size: 14px; line-height: 16px; margin: 0; padding: 0;">인스타그램에서는 바로 사전예약할 수 없어요</p>
-            <p style="color: #000; font-size: 14px; line-height: 16px; margin: 0; padding: 0;">우측 상단 ...을 탭하고 '시스템 브라우저에서 열기'를 탭해주세요</p>
+            <input type="text" id="phoneNumber" placeholder="전화번호(- 없이 숫자만)"><br>
+            <input type="button" value="사전예약하기" onclick="reservationNumber()" id="phoneNumberBut">
         </div>
         <p style="font-size: 12px; line-height: 14px;">카카오 로그인 후 사전예약이 완료되었다는 알림이 표시되어야 해요.</p>
         <p style="font-size: 12px; line-height: 14px;">사전예약이 완료되었다는 알림이 표시되지 않는다면 다시 로그인해 주세요.</p>
@@ -250,8 +251,35 @@
         if(/Instagram/.test(navigator.userAgent)){
             document.getElementById("insta1").style.display = "block";
             document.getElementById("insta2").style.display = "block";
-            document.getElementById("insta_info").style.display = "block";
+//             document.getElementById("insta_info").style.display = "block";
             document.getElementById("reservationNow").style.display = "none";
+        }
+        function reservationNumber(){
+            if(document.getElementById("phoneNumber").value.length != 11){
+                alert("전화번호는 - 없이 숫자로만 11자리를 올바르게 입력해 주세요!");
+            } else{
+                document.getElementById("phoneNumberBut").disabled = true;
+                fetch('https://api.skrr.app/reservation', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({kakaoUID: String(response.id)})
+                })
+                .then(response => response.text())
+                .then(data => {
+                    if(data == "Success"){
+                        alert("사전예약이 완료되었어요! 4월 1일, 당신을 좋아하는 사람이 누군지와 함께 돌아올게요!");
+                        document.getElementById("phoneNumberBut").disabled = false;
+                    } else if(data == "Reserved"){
+                        alert("이미 사전예약되었어요! 4월 1일까지 조금만 더 기다려 주세요!");
+                        document.getElementById("phoneNumberBut").disabled = false;
+                    } else{
+                        alert("알 수 없는 오류가 발생했어요. 고객센터(카카오톡에서 “Skrr” 검색)로 문의해 주세요.");
+                        document.getElementById("phoneNumberBut").disabled = false;
+                    }
+                })
+            }
         }
         remaindTime();
         function remaindTime() {
