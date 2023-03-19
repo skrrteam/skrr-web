@@ -252,7 +252,7 @@
             document.getElementById("insta1").style.display = "block";
             document.getElementById("insta2").style.display = "block";
 //             document.getElementById("insta_info").style.display = "block";
-            document.getElementById("reservationNow").style.display = "none";
+//             document.getElementById("reservationNow").style.display = "none";
         }
         function reservationNumber(){
             if(document.getElementById("phoneNumber").value.length != 11){
@@ -302,6 +302,10 @@
         Kakao.init('0d762501292abf3f6ea251ce68bfbae4');
         console.log(Kakao.isInitialized());
         function kakaoLogin() {
+            if(/Instagram/.test(navigator.userAgent)){
+               alert("인스타그램에서는 카카오로 사전예약할 수 없어요./n우측 상단 ...을 누른 후 "시스템 브라우저에서 열기"를 누르고 카카오 사전예약을 해보세요!");
+               return;
+            }
             Kakao.Auth.login({
                 success: function (response) {
                     Kakao.API.request({
