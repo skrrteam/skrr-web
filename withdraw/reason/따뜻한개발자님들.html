@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="skrr,낙ㄱ,스컬,sns,앙케이트,앙케트,투표,선거,선택,질문,답변,친구,학교,초등학교,중학교,고등학교,인기투표,게임,소셜네트워크,소셜네트워킹">
+    <meta name="description" content="누가 널 좋아하는지 알려줄게, Skrr하게.">
+    <link rel="icon" type="image/x-icon" href="https://skrr.app/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://skrr.app/favicon.png">
+    <meta property="og:title" content="Skrr 그만 사용하기">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://skrr.app/ogimg.png">
+    <title>Skrr 그만 사용하기</title>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap');
+        *{
+            font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif !important;
+            word-break: keep-all !important;
+        }
+        html, body{
+            font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif !important;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #222222;
+            color: white;
+        }
+        .footer_text{
+            font-size: 14px;
+            line-height: 18px;
+            margin: 4px 5px 4px 5px;
+            padding: 0;
+            display: inline;
+            cursor: pointer;
+        }
+        .footer_text:hover{
+            text-decoration: underline;
+        }
+        #userinfo, #userinfocopy{
+            border: 1px solid #aaaaaa;
+            border-radius: 4px;
+            padding: 15px 20px 15px 20px;
+            color: #000000;
+            box-sizing: border-box;
+        }
+        .button-container {
+            position: fixed;
+            bottom: 0;
+            width: 90vw;
+            max-width: 600px;
+        }
+        input, textarea, button{
+            appearance: none;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            border-radius: 0;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+        }
+        button{
+            height: 60px;
+            border: none;
+            border-radius: 16px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 90vw; min-height: 100vh; max-width: 600px; display: inline-block; text-align: left;">
+        <br><br>
+        <h1 style="font-size: 22px; font-weight: bold; line-height: 28px;">오류나 버그가 있어서 어려움을 겪으셨군요😭 정말 죄송해요.</h1>
+        <p style="font-size: 15px; font-weight: normal; color: #CCCCCC; line-height: 20px;">현재 Skrr Team에는 iOS와 android 각각 1명의 개발자 분들만 계셔서 모든 에러를 빠르게 해결하기에 어려움이 있어요. 아래 빈칸에 에러 내용을 제보해 주시면 우선적으로 에러를 해결해 드릴게요.</p>
+        <br>
+        <img src="/withdraw/skrrimg/따뜻한개발자님들.svg" style="width: 90vw; max-width: 600px;">
+        <br>
+        <div style="position: absolute; bottom: 20px; width: 90vw; max-width: 600px; display: flex; justify-content: space-between;">
+            <button style="width: 43vw; max-width: 250px; color: #CCCCCC; background-color: #444444;">탈퇴하기</button>
+            <button style="width: 43vw; max-width: 250px; color: #000000; background-color: #10F8A4;">Skrr 더 써보기</button>
+          </div>
+        <br><br>
+    </div>
+    <footer style="width: 100vw; height: fit-content; background-color: #333333; text-align: center;">
+        <div style="width: 90vw; max-width: 1000px; color: #dddddd; text-align: left; display: inline-block;">
+            <br><br>
+            <img src="https://skrr.app/img/skrr_logo_text_white.png" style="width: 50px; height: 23.6px; margin: 4px 0 4px 0;"><br>
+            <div style="margin-left: -5px;">
+                <p class="footer_text" onclick="sharing()">앱 다운로드 ↗</p>
+                <p class="footer_text" onclick="window.open('https://support.skrr.app')">문의하기 ↗</p>
+                <p class="footer_text" onclick="window.open('https://skrr.app/notice')">공지사항 ↗</p>
+                <p class="footer_text" onclick="window.open('https://skrr.app/privacy-policy')">개인정보처리방침 ↗</p>
+                <p class="footer_text" onclick="window.open('https://skrr.app/terms-of-service')">서비스 이용약관 ↗</p>
+            </div>
+            <br>
+            <p style="font-size: 14px; line-height: 18px; font-weight: bold; margin: 4px 0 8px 0; padding: 0; color: #eeeeee;">에이치제이컴퍼니 (HJCM)</p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">대표 : 김현준</p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">사업자등록번호 : <a style="text-decoration: underline; cursor: pointer;" onclick="window.open('https://www.ftc.go.kr/bizCommPop.do?wrkr_no=5146900433')">514-69-00433 ↗</a></p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #eeeeee;">통신판매업신고번호 : 2021-용인기흥-2190</p>
+            <br>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #cccccc;">© 2023 Skrr Team. 모든 권리 보유.</p>
+            <p style="font-size: 12px; line-height: 16px; margin: 4px 0 4px 0; padding: 0; color: #cccccc;">© 2023 Skrr Team. All rights reserved.</p>
+            <br>
+        </div>
+    </footer>
+</body>
+</html>
