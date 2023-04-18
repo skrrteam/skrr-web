@@ -89,9 +89,11 @@
         <p style="font-size: 17px; font-weight: normal; color: #EEEEEE; line-height: 20px; margin: 0 0 6px 0;">우리 학교 Skrr에 홍보 요청하기</p>
         <div style="display: flex; border: 1px #444444 solid; background-color: #333333; border-radius: 16px;">
             <div style="flex: 99; text-align: left;">
-                <input type="text" placeholder="예시) 한국디지털미디어고등학교" style="box-sizing: border-box; text-align: left; margin: 0;">
+                <form id="withdraw_form">
+                    <input type="text" id="notificationBody" placeholder="예시) 한국디지털미디어고등학교" style="box-sizing: border-box; text-align: left; margin: 0;">
+                </form>
             </div>
-            <div style="flex: 1; text-align: center; display: flex; align-items: center; margin-right: 100px; cursor: pointer;">
+            <div id="notificationButton" style="flex: 1; text-align: center; display: flex; align-items: center; margin-right: 100px; cursor: pointer;" onclick="withdraw_apply()">
                 <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4.1508 17.3552L19.0983 10.3577C20.2533 9.81767 20.2533 8.18267 19.0983 7.64267L4.1508 0.645168C2.3733 -0.187332 0.460801 1.49267 1.0533 3.36017L2.5983 8.25017H9.2508C9.6633 8.25017 10.0008 8.58767 10.0008 9.00017C10.0008 9.41267 9.6633 9.75017 9.2508 9.75017H2.5983L1.0533 14.6402C0.460801 16.5077 2.3733 18.1877 4.1508 17.3552Z" fill="#767676"/>
                 </svg>
@@ -128,5 +130,34 @@
             <br>
         </div>
     </footer>
+    <script>
+        function withdraw_apply(){
+            let withdraw_notificationBody = document.getElementById("notificationBody").value;
+            document.getElementById("notificationBody").value = document.getElementById("notificationBody").value + "(요청 전송 중..)";
+            document.getElementById("notificationBody").disabled = true;
+            document.getElementById("notificationButton").style.display = "none";
+            fetch('https://api.skrr.app/withdraw/notification', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({notificationBody: "L" + withdraw_notificationBody})
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.value == "Success"){
+                    document.getElementById("notificationBody").value = withdraw_notificationBody + "(요청 전송 완료)";
+                    setTimeout(function(){
+                        alert("우리 학교 Skrr에 홍보 요청이 완료되었어요! 빠른 시일 내로 보내주신 학교를 홍보할게요!");
+                    }, 100);
+                } else{
+                    document.getElementById("notificationBody").value = withdraw_notificationBody + "(요청 전송 중 오류 발생)";
+                    setTimeout(function(){
+                        alert("알 수 없는 오류가 발생했어요. 고객센터(카카오톡에서 “Skrr” 검색)로 문의해 주세요.");
+                    }, 100);
+                }
+            })
+        }
+    </script>
 </body>
 </html>
