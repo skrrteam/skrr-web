@@ -52,7 +52,7 @@
         <h1>Skrr 그만 사용하기</h1>
         <br>
         <p>Skrr 탈퇴를 위해 아래 카카오 로그인 버튼을 눌러 나오는 정보를 Skrr Team에 알려주세요.</p>
-        <p style="margin-top: 30px;">유의 사항) Skrr 멤버십과 Skrr 탈퇴는 별개예요. Skrr을 탈퇴해도 멤버십 구독은 유지되는 점 유의해 주세요.</p>
+        <p style="margin-top: 30px;">참고로 Skrr 멤버십과 Skrr 탈퇴는 별개예요. Skrr을 탈퇴해도 멤버십 구독은 유지되는 점 유의해 주세요.</p>
         <br><br>
         <div style="cursor: pointer; text-align: center; margin: 0 !important;" id="logindata_before" onclick="kakaoLogin()">
             <img src="https://stay.kimain.me/messages.png" style="width: 20px; height: 18px; background-color: #FEE501; float: left; margin-top: 16px; margin-left: 20px;">
@@ -61,6 +61,10 @@
         <div style="height: 50px; margin: 0; display: none;" id="logindata_after">
             <p id="userinfo" style="position: absolute; width: 90vw; max-width: 600px; text-align: left; margin: 0;">로그인 후 보여짐</p>
             <p id="userinfocopy" style="position: absolute; width: 90vw; max-width: 600px; text-align: right; color: #007AFF; margin: 0; cursor: pointer;" onclick="copyToClipboard(document.getElementById('userinfo').innerText)">복사</p>
+        </div>
+        <div style="margin: 0; display: none; border: 1px solid #aaaaaa; border-radius: 4px; padding: 15px 20px 15px 20px; color: #000000; box-sizing: border-box; cursor: pointer;" id="logindata_error" onclick="location.href='/withdraw'">
+            <p style="width: 90vw; max-width: 600px; text-align: left; margin: 0 0 4px 0;">정상적인 접근이 아닙니다.</p>
+            <p style="width: 90vw; max-width: 600px; text-align: left; margin: 0;">여기를 눌러 다시 시도해 주세요.</p>
         </div>
         <br><br>
         <h3>개인정보 보호를 위한 중요한 사항</h3>
@@ -96,6 +100,10 @@
     </footer>
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script>
+        if(Object.fromEntries((new URLSearchParams(window.location.search)).entries())["r"] == undefined){
+            document.getElementById("logindata_error").style.display = "block";
+            document.getElementById("logindata_before").style.display = "none";
+        }
         Kakao.init('0d762501292abf3f6ea251ce68bfbae4');
         console.log(Kakao.isInitialized());
         function kakaoLogin() {
@@ -105,7 +113,7 @@
                         url: '/v2/user/me',
                         success: function (response) {
                             console.log(response)
-                            document.getElementById("userinfo").innerText = response.id;
+                            document.getElementById("userinfo").innerText = Object.fromEntries((new URLSearchParams(window.location.search)).entries())["r"].charAt(0).toUpperCase() + response.id;
                             document.getElementById("logindata_after").style.display = "block";
                             document.getElementById("logindata_before").style.display = "none";
                         },

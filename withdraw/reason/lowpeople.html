@@ -67,6 +67,17 @@
             font-weight: 600;
             cursor: pointer;
         }
+        input[type=text]{
+            border: none;
+            border-radius: 16px;
+            padding: 7px 16px 7px 16px;
+            width: calc(90vw - 34px);
+            max-width: calc(600px - 34px);
+            font-size: 15px;
+            height: 50px;
+            color: #CCCCCC;
+            background-color: #33333300;
+        }
     </style>
 </head>
 <body>
@@ -75,10 +86,22 @@
         <h1 style="font-size: 22px; font-weight: bold; line-height: 28px;">주변에 Skrr을 사용하는 친구가 적거나 없으신가요?</h1>
         <p style="font-size: 15px; font-weight: normal; color: #CCCCCC; line-height: 20px;">아래 입력란에 학교 이름을 입력해 주세요. 저희가 다양한 이벤트와 함께 해당 학교 학생들이 Skrr을 더 많이 사용하도록 열심히 홍보할게요.</p>
         <br>
+        <p style="font-size: 17px; font-weight: normal; color: #EEEEEE; line-height: 20px; margin: 0 0 6px 0;">우리 학교 Skrr에 홍보 요청하기</p>
+        <div style="display: flex; border: 1px #444444 solid; background-color: #333333; border-radius: 16px;">
+            <div style="flex: 99; text-align: left;">
+                <input type="text" placeholder="예시) 한국디지털미디어고등학교" style="box-sizing: border-box; text-align: left; margin: 0;">
+            </div>
+            <div style="flex: 1; text-align: center; display: flex; align-items: center; margin-right: 100px; cursor: pointer;">
+                <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.1508 17.3552L19.0983 10.3577C20.2533 9.81767 20.2533 8.18267 19.0983 7.64267L4.1508 0.645168C2.3733 -0.187332 0.460801 1.49267 1.0533 3.36017L2.5983 8.25017H9.2508C9.6633 8.25017 10.0008 8.58767 10.0008 9.00017C10.0008 9.41267 9.6633 9.75017 9.2508 9.75017H2.5983L1.0533 14.6402C0.460801 16.5077 2.3733 18.1877 4.1508 17.3552Z" fill="#767676"/>
+                </svg>
+            </div>
+        </div>
+        <br><br>
         <img src="/withdraw/skrrimg/lowpeople.png" style="width: 90vw; max-width: 600px;">
         <br>
         <div style="position: absolute; bottom: 20px; width: 90vw; max-width: 600px; display: flex; justify-content: space-between;">
-            <button style="width: 43vw; max-width: 250px; color: #CCCCCC; background-color: #444444;" onclick="location.href='/withdraw'">탈퇴하기</button>
+            <button style="width: 43vw; max-width: 250px; color: #CCCCCC; background-color: #444444;" onclick="location.href='/withdraw/withdraw/?r=lowpeople'">탈퇴하기</button>
             <button style="width: 43vw; max-width: 250px; color: #000000; background-color: #10F8A4;" onclick="location.href='skrr://open'">Skrr 더 써보기</button>
           </div>
         <br><br>
