@@ -14,9 +14,9 @@
     <meta property="og:image" content="https://skrr.app/ogimg.png">
     <title>누가 널 좋아하는지 알려줄게, Skrr하게.</title>
     <script>
-        if(navigator.userAgent.match(/android/i)){
+        if(navigator.userAgent.toLowerCase().match(/android/i)){
             window.open("https://play.google.com/store/apps/details?id=com.skrrteam.skrr","sharing1","width='100%',height='100%'");
-        } else if(navigator.userAgent.match(/(iphone)|(ipod)|(ipad)|(macintosh)/i))	{
+        } else if(navigator.userAgent.toLowerCase().match(/(iphone)|(ipod)|(ipad)|(macintosh)/i))	{
             var visitedAt = (new Date()).getTime(); 
             setTimeout(
                 function(){
