@@ -51,6 +51,9 @@
 </head>
 <body>
     <script>
+        var userLanguage = navigator.language;
+        var userLocale = Intl.DateTimeFormat().resolvedOptions().locale;
+        alert(userLocale + '-' + userLanguage);
         window.location.href = 'kr';
     </script>
 </body>
