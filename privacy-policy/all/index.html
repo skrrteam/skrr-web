@@ -54,8 +54,10 @@
         var userLanguage = navigator.language.toLowerCase();
         var userLocale = Intl.DateTimeFormat().resolvedOptions().locale.toLowerCase();
         if(userLanguage.includes('ja') || userLocale.includes('ja') || userLanguage.includes('jp') || userLocale.includes('jp')){
+            localStorage.setItem("lang", "jp");
             window.location.href = 'jp';
         } else{
+            localStorage.setItem("lang", "kr");
             window.location.href = 'kr';
         }
     </script>

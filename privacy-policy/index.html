@@ -680,10 +680,10 @@
             var userLanguage = navigator.language.toLowerCase();
             var userLocale = Intl.DateTimeFormat().resolvedOptions().locale.toLowerCase();
             if(userLanguage.includes('ja') || userLocale.includes('ja') || userLanguage.includes('jp') || userLocale.includes('jp')){
-                localStorage.setItem("key", "jp");
+                localStorage.setItem("lang", "jp");
                 document.getElementById("lang" + localStorage.getItem("lang")).style.display = "block";
             } else{
-                localStorage.setItem("key", "kr");
+                localStorage.setItem("lang", "kr");
                 document.getElementById("lang" + localStorage.getItem("lang")).style.display = "block";
             }
         }
