@@ -467,8 +467,8 @@
         <canvas style="--gradient-color-1: #5b1146; --gradient-color-2: #021c78; --gradient-color-3: #125669; --gradient-color-4: #017245; position: absolute; width: calc(100vw + 40px); height: calc(100vh + 40px); filter: blur(20px);" id="gradient-canvas" data-transition-in></canvas>
         <div style="height: fit-content; padding: 0; margin-top: 0px; margin-bottom: 0px; position: absolute;">
             <br>
-            <h1 style="margin: 0; padding: 0; color: #FFFFFF; font-weight: 900; font-size: 8vw;">개인정보 보호,</h1>
-            <h1 style="margin: 10px 0 0 0; padding: 0; color: #FFFFFF; font-weight: 900; font-size: 8vw;">무엇보다 가장 중요하니까.</h1>
+            <h1 id="title1" style="margin: 0; padding: 0; color: #FFFFFF; font-weight: 900; font-size: 8vw;">개인정보 보호,</h1>
+            <h1 id="title2" style="margin: 10px 0 0 0; padding: 0; color: #FFFFFF; font-weight: 900; font-size: 8vw;">무엇보다 가장 중요하니까.</h1>
         </div>
         <div style="position: absolute; bottom: 76px;" id="subscribe">
             <div class="arrows"></div>
@@ -676,12 +676,18 @@
     <script>
         if(localStorage.getItem("lang") != null && localStorage.getItem("lang") != undefined){
             document.getElementById("lang" + localStorage.getItem("lang")).style.display = "block";
+            if(localStorage.getItem("lang") == "jp"){
+                document.getElementById("title1").innerText = "個人情報保護です、";
+                document.getElementById("title2").innerText = "何より一番大事ですからね。";
+            }
         } else{
             var userLanguage = navigator.language.toLowerCase();
             var userLocale = Intl.DateTimeFormat().resolvedOptions().locale.toLowerCase();
             if(userLanguage.includes('ja') || userLocale.includes('ja') || userLanguage.includes('jp') || userLocale.includes('jp')){
                 localStorage.setItem("lang", "jp");
                 document.getElementById("lang" + localStorage.getItem("lang")).style.display = "block";
+                document.getElementById("title1").innerText = "個人情報保護です、";
+                document.getElementById("title2").innerText = "何より一番大事ですからね。";
             } else{
                 localStorage.setItem("lang", "kr");
                 document.getElementById("lang" + localStorage.getItem("lang")).style.display = "block";
