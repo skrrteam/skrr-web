@@ -51,12 +51,18 @@
 </head>
 <body>
     <script>
-        var userLanguage = navigator.language.toLowerCase();
-        var userLocale = Intl.DateTimeFormat().resolvedOptions().locale.toLowerCase();
-        if(userLanguage.includes('ja') || userLocale.includes('ja') || userLanguage.includes('jp') || userLocale.includes('jp')){
-            window.location.href = 'jp';
+        if(localStorage.getItem("lang") != null && localStorage.getItem("lang") != undefined){
+            window.location.href = localStorage.getItem("lang");
         } else{
-            window.location.href = 'kr';
+            var userLanguage = navigator.language.toLowerCase();
+            var userLocale = Intl.DateTimeFormat().resolvedOptions().locale.toLowerCase();
+            if(userLanguage.includes('ja') || userLocale.includes('ja') || userLanguage.includes('jp') || userLocale.includes('jp')){
+                localStorage.setItem("key", "jp");
+                window.location.href = 'jp';
+            } else{
+                localStorage.setItem("key", "kr");
+                window.location.href = 'kr';
+            }
         }
     </script>
 </body>
