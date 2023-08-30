@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="skrr,낙ㄱ,스컬,sns,앙케이트,앙케트,투표,선거,선택,질문,답변,친구,학교,초등학교,중학교,고등학교,인기투표,게임,소셜네트워크,소셜네트워킹">
+    <meta name="description" content="누가 널 좋아하는지 알려줄게, Skrr하게.">
+    <link rel="icon" type="image/x-icon" href="https://skrr.app/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://skrr.app/favicon.png">
+    <meta property="og:title" content="Skrr - JP">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://skrr.app/open">
+    <meta property="og:image" content="https://skrr.app/ogimg.png">
+    <title>Skrr - JP</title>
+    <script>
+        if(navigator.userAgent.toLowerCase().match(/android/i)){
+            location.href = "https://play.google.com/store/apps/details?id=com.skrrteam.skrr.jp";
+        } else if(navigator.userAgent.toLowerCase().match(/(iphone)|(ipod)|(ipad)|(macintosh)/i))	{
+            var visitedAt = (new Date()).getTime(); 
+            setTimeout(
+                function(){
+                    if((new Date()).getTime() - visitedAt < 2000){
+                        location.href = "https://apps.apple.com/jp/app/skrr/id6450540666";
+                    }
+            }, 500);
+        } else{
+            alert("Please check again in mobile.");
+        }
+    </script>
+</body>
+</html>
